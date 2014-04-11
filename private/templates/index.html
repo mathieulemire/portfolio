@@ -27,13 +27,30 @@
         <div class="row">
         </div>
       </div>
-      <div class="clear"></div>
+      <div class="clear">
+        <form action="{{ conf['url'] }}/signup" method="POST" role="form" class="form-inline">
+          <div class="form-group">
+            <input id="rName" name="rName" type="text" value="{{ rName }}" class="hidden form-control input-sm"/>
+          </div>
+          <div class="form-group">
+            <input id="rEmail" name="rEmail" type="text" value="{{ rEmail }}" class="hidden form-control input-sm"/>
+          </div>
+          <div class="form-group">
+            <input id="name" name="name" type="text" placeholder="Enter you name" class="form-control input-sm"/>
+          </div>
+          <div class="form-group">
+            <input id="email" name="email" type="text" placeholder="Enter friend's e-mail" value="{{ email }}" class="form-control input-sm"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Sing up</button>
+        </form>
+      </div>
       <div id="footer">
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <a href="https://facebook.com/mathlphoto"><i class="icon-facebook icon-large icon-white">&nbsp;</i></a>
-              <a href="https://twitter.com/Lemirephoto"><i class="icon-twitter-t icon-large icon-white">&nbsp;</i></a>
+              <a href="https://facebook.com/mathlphoto" target="_blank"><i class="icon-facebook icon-large icon-white">&nbsp;</i></a>
+              <a href="https://twitter.com/Lemirephoto" target="_blank"><i class="icon-twitter icon-large icon-white">&nbsp;</i></a>
+              <div class
             </div>
           </div>
         </div>

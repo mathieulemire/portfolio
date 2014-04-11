@@ -10,8 +10,8 @@ nav.navbar.navbar-default {
   border-radius: 0px;
 }
 div.navbar-header * {
-  color: white !important;
-  opacity: 1.0 !important;
+  color: black !important;
+  opacity: 1 !important;
 }
 div#main {
   height: 100%;
@@ -36,4 +36,8 @@ div#footer {
   opacity: 0.2;
   padding-top: 20px;
   padding-bottom: 10px;
+}
+div#footer div.container {
+  color: black !important;
+  opacity: 1 !important;
 }

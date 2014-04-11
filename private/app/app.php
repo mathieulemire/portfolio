@@ -36,22 +36,11 @@ abstract class App
       return mail( $to, $sub, $msg, $headers );
     });
 
-    $app['css'] = $app->protect(function($filename='style.css'){
-      $scripts = array(
-          file_get_contents(__DIR__.'/../style/bootstrap.min.css'),
-          file_get_contents(__DIR__.'/../style/bootstrap.glyphicons.min.css'),
-          file_get_contents(__DIR__.'/../style/media.css'),
-          file_get_contents(__DIR__.'/../style/'.$filename)
-        );
-      return implode("\r\n", $scripts);
-    });
-
-    $app['js'] = $app->protect(function($filename='client.js'){
-      $scripts = array(
-          file_get_contents(__DIR__.'/../client/jquery-2.0.2-min.js'),
-          file_get_contents(__DIR__.'/../client/bootstrap.min.js'),
-          file_get_contents(__DIR__.'/../client/'.$filename)
-        );
+    $app['loader'] = $app->protect(function($f=array(),$p='..'){
+      $scripts = array();
+      foreach ($f as $i => $filename) {      
+        $scripts[] = file_get_contents(__DIR__.'/'.$p.'/'.$filename);
+      }
       return implode("\r\n", $scripts);
     });
 
@@ -62,46 +51,55 @@ abstract class App
   protected static function addRoutes()
   {
     $app = static::$instance;
-    static::$routes = array(
+    static::$routes = array(                
       array('method'=>'GET','name'=>'/','callback'=>function() use($app){
         $conf = $app['conf'];
-        $css = $app['css'];
-        $js = $app['js'];
+        $loader = $app['loader'];
+        $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css'),'../style');
+        $js = $loader(array('jquery-2.0.2-min.js','bootstrap.min.js','client.js','facebook.js'),'../client');
         $template_engine = $app['template_engine'];
-        return $template_engine->render('index.html',array('conf'=>$conf,'css'=>$css(),'js'=>$js().$js('facebook.js')));
+        return $template_engine->render('index.html',array('conf'=>$conf,'css'=>$css,'js'=>$js));
       }),
-      array('method'=>'GET','name'=>'/signup','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
-        $rName = $req->get('rName');
-        $rEmail = $req->get('rEmail');
-        $email = $req->get('email');
+      array('method'=>'GET','name'=>'/portfolio','callback'=>function() use($app){
         $conf = $app['conf'];
-        $css = $app['css'];
+        $loader = $app['loader'];
+        $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css','image-slide.css'),'../style');
+        $js = $loader(array('jquery-2.0.2-min.js','jquery.easing.1.3.js'),'./client');
         $template_engine = $app['template_engine'];
-        return $template_engine->render('signup.html',array('rName'=>$rName,'rEmail'=>$rEmail,'email'=>$email,'conf'=>$conf,'css'=>$css()));
-      }),
-      array('method'=>'POST','name'=>'/invite','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
-        $rName = $req->get('rName');
-        $rEmail = $req->get('rEmail');
-        $email = $req->get('email');
-        $conf = $app['conf'];
-        $css = $app['css'];
-        $template_engine = $app['template_engine'];
-        $mail = $app['mail'];
-        $message = $template_engine->render('invitation.html',array('rName'=>$rName,'rEmail'=>$rEmail,'email'=>$email,'conf'=>$conf,'css'=>$css()));
-        $sent = $mail($email, $rName.' invited you to MailBot', $message);
-        return new \Symfony\Component\HttpFoundation\Response($sent ? 'OK':'Mailing Problem', $sent ? 201:500);
-      }),
-      array('method'=>'POST','name'=>'/signup','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
-        $email = $req->get('email');
-        $name = $req->get('name');
-        $conf = $app['conf'];
-        $css = $app['css'];
-        $template_engine = $app['template_engine'];
-        $mail = $app['mail'];
-        $message = $template_engine->render('welcome.html',array('name'=>$name,'email'=>$email,'conf'=>$conf,'css'=>$css()));
-        $sent = $mail($email,'Welcome to MailBot', $message);
-        return new \Symfony\Component\HttpFoundation\Response($sent ? 'OK':'Mailing Problem', $sent ? 201:500);
-      })  
+        return $template_engine->render('portfolio.html',array('conf'=>$conf,'css'=>$css,'js'=>$js));
+      }),      
+      // array('method'=>'GET','name'=>'/signup','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
+      //   $rName = $req->get('rName');
+      //   $rEmail = $req->get('rEmail');
+      //   $email = $req->get('email');
+      //   $conf = $app['conf'];
+      //   $css = $app['css'];
+      //   $template_engine = $app['template_engine'];
+      //   return $template_engine->render('signup.html',array('rName'=>$rName,'rEmail'=>$rEmail,'email'=>$email,'conf'=>$conf,'css'=>$css()));
+      // }),
+      // array('method'=>'POST','name'=>'/invite','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
+      //   $rName = $req->get('rName');
+      //   $rEmail = $req->get('rEmail');
+      //   $email = $req->get('email');
+      //   $conf = $app['conf'];
+      //   $css = $app['css'];
+      //   $template_engine = $app['template_engine'];
+      //   $mail = $app['mail'];
+      //   $message = $template_engine->render('invitation.html',array('rName'=>$rName,'rEmail'=>$rEmail,'email'=>$email,'conf'=>$conf,'css'=>$css()));
+      //   $sent = $mail($email, $rName.' invited you to MailBot', $message);
+      //   return new \Symfony\Component\HttpFoundation\Response($sent ? 'OK':'Mailing Problem', $sent ? 201:500);
+      // }),
+      // array('method'=>'POST','name'=>'/signup','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
+      //   $email = $req->get('email');
+      //   $name = $req->get('name');
+      //   $conf = $app['conf'];
+      //   $css = $app['css'];
+      //   $template_engine = $app['template_engine'];
+      //   $mail = $app['mail'];
+      //   $message = $template_engine->render('welcome.html',array('name'=>$name,'email'=>$email,'conf'=>$conf,'css'=>$css()));
+      //   $sent = $mail($email,'Welcome to MailBot', $message);
+      //   return new \Symfony\Component\HttpFoundation\Response($sent ? 'OK':'Mailing Problem', $sent ? 201:500);
+      // })  
     );
 
     foreach (static::$routes as $i => $r) {

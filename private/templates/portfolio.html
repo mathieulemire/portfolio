@@ -1,0 +1,33 @@
+<html>
+  <head> 
+  </head>
+  <body>
+    <style type="text/css">
+    {% autoescape false %}
+      {{ css }}
+    {% endautoescape %}
+    </style>
+    <div class="fp_gallery" id="fp_gallery">
+      <img style="display:none;" class="fp_preview" alt="" src="images/1.jpg">
+      <div class="fp_overlay"></div>
+      <div class="fp_loading" id="fp_loading"></div>
+      <div class="fp_next" id="fp_next"></div>
+      <div class="fp_prev" id="fp_prev"></div>
+      <div id="outer_container">
+        <div id="thumbScroller">
+          <div class="container">
+            <div class="content">
+              <div><a href="#"><img class="thumb" alt="images/1.jpg" src="images/thumbs/1.jpg"></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fp_thumbtoggle" id="fp_thumbtoggle">View Thumbs</div>
+    </div>
+    <script type="text/javascript">
+    {% autoescape false %}
+      {{ js }}
+    {% endautoescape %}
+    </script>
+  </body>
+</html>
