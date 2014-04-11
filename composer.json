@@ -1,0 +1,18 @@
+{
+  "authors":[
+    {
+      "name":"mathieulemire",
+      "email":"mathieulemire88@gmail.com",
+      "homepage":"http://mathieulemire.com"
+    }
+  ],
+  "license":"GPL-3.0+",
+  "version":"1.0.0-dev",
+  "require":{
+    "silex/silex": "~1.1",
+    "twig/twig": "1.*"
+  },
+  "autoload": {
+    "psr-4": {"portfolio\\": "private/app/"}
+  }
+}
