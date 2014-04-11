@@ -1,0 +1,39 @@
+ /* general style tag content */
+.hidden {
+  display: none !important;
+}
+/* HEADER */
+nav.navbar.navbar-default {
+  opacity: 0.2;
+  background-color: gray;
+  border: none;
+  border-radius: 0px;
+}
+div.navbar-header * {
+  color: white !important;
+  opacity: 1.0 !important;
+}
+div#main {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-image: url('/images/ml_bg_1024.jpg');
+}
+span.brand {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 120%; 
+}
+
+/* FOOTER */
+div#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  background-color: gray;
+  opacity: 0.2;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
