@@ -1,5 +1,6 @@
 <html>
   <head> 
+    <title>Mathieu Lemire - photography</title>
   </head>
   <body>
     <style type="text/css">
@@ -8,7 +9,7 @@
     {% endautoescape %}
     </style>
     <div class="fp_gallery" id="fp_gallery">
-      <img style="display:none;" class="fp_preview" alt="" src="images/1.jpg">
+      <img style="" class="fp_preview" alt="/images/ml_bg_1024.jpg" src="/images/ml_bg_1024.jpg">
       <div class="fp_overlay"></div>
       <div class="fp_loading" id="fp_loading"></div>
       <div class="fp_next" id="fp_next"></div>
@@ -16,9 +17,11 @@
       <div id="outer_container">
         <div id="thumbScroller">
           <div class="container">
+            {% for image in thumbnails %}
             <div class="content">
-              <div><a href="#"><img class="thumb" alt="images/1.jpg" src="images/thumbs/1.jpg"></a></div>
+              <div><a href="#"><img class="thumb" alt="/images/{{ album }}/{{ image }}" src="/images/{{ album }}/{{ image }}"></a></div>
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>

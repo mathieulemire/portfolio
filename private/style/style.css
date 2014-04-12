@@ -2,12 +2,22 @@
 .hidden {
   display: none !important;
 }
+.fp_overlay{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0px;
+  left:0px;
+  z-index: 1;
+  background:transparent url(/images/pattern2.png) repeat-x bottom left;
+}
 /* HEADER */
 nav.navbar.navbar-default {
-  opacity: 0.2;
+  opacity: 0.4;
   background-color: gray;
   border: none;
   border-radius: 0px;
+  z-index: 3;
 }
 div.navbar-header * {
   color: black !important;
@@ -19,7 +29,14 @@ div#main {
   position: fixed;
   top: 0;
   width: 100%;
-  background-image: url('/images/ml_bg_1024.jpg');
+  background-image: url(/images/ml_bg_1024.jpg);
+}
+div.signup {
+  margin-left: 10px;
+}
+div.signup form {
+  position: absolute;
+  z-index: 3;
 }
 span.brand {
   font-style: italic;
@@ -37,7 +54,7 @@ div#footer {
   padding-top: 20px;
   padding-bottom: 10px;
 }
-div#footer div.container {
+div#footer div.container * {
   color: black !important;
   opacity: 1 !important;
 }

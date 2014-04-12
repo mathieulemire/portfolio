@@ -51,12 +51,15 @@ img.clone{
   outline:none;
 }
 .fp_overlay{
+  /*
   width:100%;
   height:100%;
   position:fixed;
   top:0px;
   left:0px;
-  background:transparent url(../images/icons/pattern2.png) repeat-x bottom left;
+  background:transparent url(/images/pattern2.png) repeat-x bottom left;
+  */
+  z-index: 0 !important;
 }
 .fp_loading{
   display:none;
@@ -64,7 +67,7 @@ img.clone{
   top:50%;
   left:50%;
   margin:-35px 0px 0px -35px;
-  background:#000 url(../images/icons/loader.gif) no-repeat center center;
+  background:#000 url(/images/loader.gif) no-repeat center center;
   width:70px;
   height:70px;
   -moz-border-radius:10px;
@@ -88,11 +91,11 @@ img.clone{
   opacity:0.9;
 }
 .fp_next{
-  background:#000 url(../images/icons/next.png) no-repeat center center;
+  background:#000 url(/images/next.png) no-repeat center center;
   right:-50px;
 }
 .fp_prev{
-  background:#000 url(../images/icons/prev.png) no-repeat center center;
+  background:#000 url(/images/prev.png) no-repeat center center;
   left:-50px;
 }
 .fp_thumbtoggle{
@@ -143,6 +146,6 @@ h1.title{
   top:10px;
   left:10px;
   text-indent:-9000px;
-  background:transparent url(images/icons/title.png) no-repeat top left;
+  background:transparent url(/images/title.png) no-repeat top left;
   z-index:2;
 }
