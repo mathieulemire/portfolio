@@ -1,4 +1,4 @@
-portfolio
-=========
+Mathieu Lemire photography
+==========================
 
-Website for professional portfolio
+An online professional portfolio for photography.
