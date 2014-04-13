@@ -9,7 +9,29 @@
     {% endautoescape %}
     </style>
     <div>
-      
+      <h1>Mathieu Lemire photography</h1>
+      <p>Dear Subscriber,</p>
+      <p>Thank you for choosing <a href="{{ conf['url'] }}/">mathieulemire.com</a>.</p>
+      <p>Don't forget to follows us on twitter @<a class="" href="https://twitter.com/Lemirephoto" target="_blank">lemirephoto</a>
+      <p>
+        <br/>
+        <label>Tell a friend:</label>
+        <form action="{{ conf['url'] }}/invite" method="POST" role="form" class="form-inline">
+          <div class="form-group">
+            <input id="rName" name="rName" type="text" value="{{ name }}" class="hidden form-control input-sm"/>
+          </div>
+          <div class="form-group">
+            <input id="rEmail" name="rEmail" type="text" value="{{ email }}" class="hidden form-control input-sm"/>
+          </div>
+          <div class="form-group">
+            <input id="email" name="email" type="text" placeholder="Enter friend's e-mail" class="form-control input-sm"/>
+          </div>
+          <button type="submit" class="btn btn-default btn-sm">whistle</button>
+        </form>
+      </p>
+    </div>
+    <div>
+      <a href="#">Add To Contacts</a>
     </div>
     <script type="text/javascript">
     {% autoescape false %}

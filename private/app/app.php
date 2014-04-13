@@ -32,7 +32,8 @@ abstract class App
     $app['mail'] = $app->protect(function($to,$sub,$msg){
       $headers  = 'MIME-Version: 1.0' . "\r\n";
       $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-      $headers .= 'From: cs@mailbot.com (MailBot)' . "\r\n";
+      $headers .= 'From: services@mathieulemire.com (Mathieu Lemire photography)' . "\r\n";
+      $headers .= 'Reply-to: services@mathieulemire.com' . "\r\n";
       return mail( $to, $sub, $msg, $headers );
     });
 
@@ -114,10 +115,13 @@ abstract class App
         $template_engine = $app['template_engine'];
         $mail = $app['mail'];
         $message = $template_engine->render('invitation.html',array('rName'=>$rName,'rEmail'=>$rEmail,'email'=>$email,'conf'=>$conf,'css'=>$css));
-        $sent = $mail($email, $rName.' invited you to MailBot', $message);
-        return new \Symfony\Component\HttpFoundation\Response($sent ? 'OK':'Mailing Problem', $sent ? 201:500);
+        $sent = $mail($email, $rName.', see Mathieu Lemire photography', $message);
+        if ((bool)$sent) {
+          return $app->redirect('/?success',302);
+        }
+        return $app->redirect('/?alert={type:warning,message:SendMailError}',302);
       }),
-      array('method'=>'POST','name'=>'/signup','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
+      array('method'=>'POST','name'=>'/subscribe','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
         $email = $req->get('email');
         $name = $req->get('name');
         $loader = $app['loader'];
@@ -125,8 +129,11 @@ abstract class App
         $template_engine = $app['template_engine'];
         $mail = $app['mail'];
         $message = $template_engine->render('welcome.html',array('name'=>$name,'email'=>$email,'conf'=>$conf,'css'=>$css));
-        $sent = $mail($email,'Welcome to MailBot', $message);
-        return new \Symfony\Component\HttpFoundation\Response($sent ? 'OK':'Mailing Problem', $sent ? 201:500);
+        $sent = $mail($email,'Mathieu Lemire photography', $message);
+        if ((bool)$sent) {
+          return $app->redirect('/?success',302);
+        }
+        return $app->redirect('/?alert={type:warning,message:SendMailError}',302);
       })  
     );
 

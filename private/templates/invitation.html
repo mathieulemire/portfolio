@@ -9,7 +9,13 @@
     {% endautoescape %}
     </style>
     <div>
-      
+      <h1>Mathieu Lemire photography</h1>
+      <p>Dear friend,</p>
+      <p>Come see me at <a href="{{ conf['url'] }}/">mathieulemire.com</a></p>
+      <label>Subscription e-mail:</label>
+      <a href="{{ conf['url'] }}/signup?rName={{ rName }}&rEmail={{ rEmail }}&email={{ email }}">
+        <button class="btn btn-primary">Join</button>
+      </a>
     </div>
     <script type="text/javascript">
     {% autoescape false %}
