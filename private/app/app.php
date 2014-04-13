@@ -67,7 +67,7 @@ abstract class App
         $conf = $app['conf'];
         $loader = $app['loader'];
         $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css'),'../style');
-        $js = $loader(array(),'../client');
+        $js = $loader(array('jquery-2.0.2-min.js','bootstrap.min.js'),'../client');
         $cmd_ls = $app['cmd:ls'];
         $albums = $cmd_ls('../../public/images','.',false);
         $template_engine = $app['template_engine'];
@@ -80,7 +80,6 @@ abstract class App
         $js = $loader(array(),'../client');
         $cmd_ls = $app['cmd:ls'];
         $albums = $cmd_ls('../../public/images','.',false);
-        var_dump($albums);
         $template_engine = $app['template_engine'];
         return $template_engine->render('admin.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'portfolio'=>$albums));
       }),
