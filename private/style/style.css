@@ -14,7 +14,7 @@
 /* HEADER */
 nav.navbar.navbar-default {
   opacity: 0.4;
-  background-color: gray;
+  background-color: white;
   border: none;
   border-radius: 0px;
   z-index: 3;
@@ -47,9 +47,10 @@ span.brand {
 /* FOOTER */
 div#footer {
   position: absolute;
+  z-index: 1;
   width: 100%;
   bottom: 0px;
-  background-color: gray;
+  background-color: white;
   opacity: 0.2;
   padding-top: 20px;
   padding-bottom: 10px;

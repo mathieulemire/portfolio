@@ -44,6 +44,17 @@ abstract class App
       return implode("\r\n", $scripts);
     });
 
+    $app['cmd:ls'] = $app->protect(function($p='..',$s='.',$n=true){
+      $dh  = opendir(__DIR__.'/'.$p);
+      while (false !== (bool)($f = readdir($dh))) {
+        if($n === true and (bool)strpos($f,$s))
+          $files[] = $f;
+        if($n === false and strpos($f,$s) === false)
+          $files[] = $f;
+      }
+      return $files;
+    });
+
     static::$instance = $app;
     return static::$instance;
   }
@@ -56,21 +67,42 @@ abstract class App
         $conf = $app['conf'];
         $loader = $app['loader'];
         $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css'),'../style');
-        $js = $loader(array('jquery-2.0.2-min.js','bootstrap.min.js','client.js'),'../client');
+        $js = $loader(array(),'../client');
+        $cmd_ls = $app['cmd:ls'];
+        $albums = $cmd_ls('../../public/images','.',false);
         $template_engine = $app['template_engine'];
-        return $template_engine->render('index.html',array('conf'=>$conf,'css'=>$css,'js'=>$js));
+        return $template_engine->render('index.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'albums'=>$albums));
+      }),
+      array('method'=>'GET','name'=>'/admin','callback'=>function() use($app){
+        $conf = $app['conf'];
+        $loader = $app['loader'];
+        $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css'),'../style');
+        $js = $loader(array(),'../client');
+        $cmd_ls = $app['cmd:ls'];
+        $albums = $cmd_ls('../../public/images','.',false);
+        var_dump($albums);
+        $template_engine = $app['template_engine'];
+        return $template_engine->render('admin.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'portfolio'=>$albums));
+      }),
+      array('method'=>'POST','name'=>'/admin','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
+        return $app->redirect('/admin',302);
+      }),
+      array('method'=>'POST','name'=>'/upload','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
+        return $app->redirect('/admin',302);
       }),
       array('method'=>'GET','name'=>'/portfolio/{album}','callback'=>function($album) use($app){
         $conf = $app['conf'];
         $loader = $app['loader'];
         $css = $loader(array('style.css','image-slide.css'),'../style');
         $js = $loader(array('jquery-1.4.2-min.js','jquery.easing.1.3.js','image-slide.js'),'../client');
+        $cmd_ls = $app['cmd:ls'];
+        $filenames = $cmd_ls('../../public/images/'.$album);
         $template_engine = $app['template_engine'];
         return $template_engine->render('portfolio.html',array(
           'conf'=>$conf,'css'=>$css,'js'=>$js,
-          'album'=>'samana_20140411',
-          'filename'=>'1_1024.jpg',
-          'thumbnails'=>array('1_1024.jpg','2_1024.jpg','3_1024.jpg','2_1024.jpg','3_1024.jpg','2_1024.jpg','3_1024.jpg')
+          'album'=>$album,
+          'filename'=>$filenames[0],
+          'thumbnails'=>$filenames
           )
         );
       }),      

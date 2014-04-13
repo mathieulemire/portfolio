@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Mathieu Lemire - photography</title>
+  </head>
+  <body>
+    <style type="text/css">
+    {% autoescape false %}
+      {{ css }}
+    {% endautoescape %}
+    </style>
+    <div id="main" >
+      <div class="jumbotron">
+      {% if admin %}
+        {% if alert %}
+        <div class="alert alert-{{ alert['type'] }}">
+          <strong>{{ alert['type']|capitalize }}!</strong>&nbsp;{{ alert['messsage'] }}
+        </div>
+        {% endif %}
+        <form action="{{ conf['url'] }}/upload" method="POST" role="form" class="">
+          <div class="form-group">
+            <label for="uri">Select image:</label>
+            <input type="file" name="uri" class="btn btn-default"/>
+          </div>
+          <div class="form-group">
+            <select name="album" class="btn btn-default">
+                {% for album in portfolio %}
+                  <option>{{ album }}</option>
+                {% endfor %}
+            </select>    
+            <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+          </div>      
+        </form>
+      {% else %}
+        <label>Administrator:</label>
+        <form action="{{ conf['url'] }}/admin" method="POST" role="form" class="form-inline">
+          <div class="form-group">
+            <input id="name" name="name" type="text" placeholder="Enter your name" class="form-control input-sm"/>
+          </div>
+          <div class="form-group">
+            <input id="password" name="password" type="password" placeholder="Enter your password" value="{{ password }}" class="form-control input-sm"/>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Sing In</button>
+        </form>
+      {% endif %}
+      </div>      
+    </div>
+    <script type="text/javascript">
+    {% autoescape false %}
+      {{ js }}
+    {% endautoescape %}
+    </script>
+  </body>
+</html>
