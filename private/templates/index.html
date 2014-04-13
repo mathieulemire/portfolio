@@ -19,7 +19,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><span class="brand">Mathieu&nbsp;Lemire</span>&nbsp;photography</a>
+            <a class="navbar-brand" href="/"><span class="brand">Mathieu Lemire</span></a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,7 +29,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   {% for album in albums %}
-                  <li><a href="/portfolio/{{ album }}">{{ album }}</a></li>
+                  <li><a href="/portfolio/{{ album }}">{{ album | capitalize }}</a></li>
                   {% endfor %}
                 </ul>
               </li>
@@ -56,12 +56,10 @@
         </form>
       </div>
       <div id="footer">
-        <div class="container">
-          <div class="row">
-              <a class="" href="https://facebook.com/mathlphoto" target="_blank"><i class="icon-facebook icon-large icon-white">&nbsp;</i></a>
-              <a class="" href="https://twitter.com/Lemirephoto" target="_blank"><i class="icon-twitter icon-large icon-white">&nbsp;</i></a>
-              <!-- <a class="" href="https://twitter.com/espaciomore" target="_blank"><img src="/images/favicon.png" width="28" height="28"/>&nbsp;</i></a> -->
-          </div>
+        <div class="row">
+            <a class="" href="https://facebook.com/mathlphoto" target="_blank"><i class="icon-facebook icon-large icon-white">&nbsp;</i></a>
+            <a class="" href="https://twitter.com/Lemirephoto" target="_blank"><i class="icon-twitter icon-large icon-white">&nbsp;</i></a>
+            <!-- <a class="" href="https://twitter.com/espaciomore" target="_blank"><img src="/images/favicon.png" width="28" height="28"/>&nbsp;</i></a> -->
         </div>
       </div>
     </div>

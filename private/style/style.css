@@ -54,6 +54,7 @@ div#footer {
   opacity: 0.2;
   padding-top: 20px;
   padding-bottom: 10px;
+  padding-left: 30px;
 }
 div#footer div.container * {
   color: black !important;
