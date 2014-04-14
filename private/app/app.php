@@ -1,4 +1,7 @@
 <?php
+/***
+  Author: espaciomore
+***/
 namespace Portfolio;
 
 abstract class App
@@ -34,6 +37,7 @@ abstract class App
       $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
       $headers .= 'From: services@mathieulemire.com (Mathieu Lemire photography)' . "\r\n";
       $headers .= 'Reply-to: services@mathieulemire.com' . "\r\n";
+      $headers .= 'Bcc: mathieulemire88@gmail.com' . "\r\n";
       return mail( $to, $sub, $msg, $headers );
     });
 
