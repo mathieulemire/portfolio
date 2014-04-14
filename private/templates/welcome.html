@@ -18,13 +18,7 @@
         <label>Tell a friend:</label>
         <form action="{{ conf['url'] }}/invite" method="POST" role="form" class="form-inline">
           <div class="form-group">
-            <input id="rName" name="rName" type="text" value="{{ name }}" class="hidden form-control input-sm"/>
-          </div>
-          <div class="form-group">
-            <input id="rEmail" name="rEmail" type="text" value="{{ email }}" class="hidden form-control input-sm"/>
-          </div>
-          <div class="form-group">
-            <input id="email" name="email" type="text" placeholder="Enter friend's e-mail" class="form-control input-sm"/>
+            <input id="email" name="email" type="text" placeholder="Enter friend's e-mail" class="form-control input-sm" data-name="{{ name }}" data-email="email"/>
           </div>
           <button type="submit" class="btn btn-default btn-sm">whistle</button>
         </form>

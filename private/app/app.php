@@ -70,7 +70,7 @@ abstract class App
         $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css'),'../style');
         $js = $loader(array('jquery-2.0.2-min.js','bootstrap.min.js'),'../client');
         $cmd_ls = $app['cmd:ls'];
-        $albums = $cmd_ls('../../public/images','.',false);
+        $albums = $cmd_ls('../../images','.',false);
         $template_engine = $app['template_engine'];
         return $template_engine->render('index.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'albums'=>$albums));
       }),
@@ -80,7 +80,7 @@ abstract class App
         $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css'),'../style');
         $js = $loader(array(),'../client');
         $cmd_ls = $app['cmd:ls'];
-        $albums = $cmd_ls('../../public/images','.',false);
+        $albums = $cmd_ls('../../images','.',false);
         $template_engine = $app['template_engine'];
         return $template_engine->render('admin.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'portfolio'=>$albums));
       }),
@@ -96,7 +96,7 @@ abstract class App
         $css = $loader(array('style.css','image-slide.css'),'../style');
         $js = $loader(array('jquery-1.4.2-min.js','jquery.easing.1.3.js','image-slide.js'),'../client');
         $cmd_ls = $app['cmd:ls'];
-        $filenames = $cmd_ls('../../public/images/'.$album);
+        $filenames = $cmd_ls('../../images/'.$album);
         $template_engine = $app['template_engine'];
         return $template_engine->render('portfolio.html',array(
           'conf'=>$conf,'css'=>$css,'js'=>$js,
@@ -131,6 +131,7 @@ abstract class App
         $message = $template_engine->render('welcome.html',array('name'=>$name,'email'=>$email,'conf'=>$conf,'css'=>$css));
         $sent = $mail($email,'Mathieu Lemire photography', $message);
         if ((bool)$sent) {
+          touch(__DIR__.'/../../subscribers/'.$email);
           return $app->redirect('/?success',302);
         }
         return $app->redirect('/?alert={type:warning,message:SendMailError}',302);
