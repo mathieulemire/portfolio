@@ -23,7 +23,7 @@ div.navbar-header * {
   color: black !important;
   opacity: 1 !important;
 }
-div.header {
+div.homepage {
   height: 100%;
   left: 0;
   position: fixed;
@@ -36,7 +36,9 @@ span.brand {
   font-weight: bold;
   font-size: 120%; 
 }
-
+div.jumbotron {
+  background-color: rgba(255,255,255,0.8);
+}
 /* FOOTER */
 div.footer {
   position: absolute;

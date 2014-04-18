@@ -11,7 +11,7 @@
       {{ css }}
     {% endautoescape %}
     </style>
-    <div class="header">
+    <div class="homepage">
       <!-- <div class="fp_overlay"></div> -->
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -27,7 +27,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class=""><a href="#"><i>About</i></a></li>
+              <li class=""><a data-toggle="modal" href="#biography"><i>About</i></a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i>Portfolio</i> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -41,6 +41,31 @@
           </div><!-- /.navbar-collapse -->
         </div>
       </nav>
+      <div class="modal" id="biography"><!-- note the use of "hide" class -->
+        <div class="container">
+          <div class="jumbotron">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">×</button>
+              <h3>Biography</h3>
+            </div>
+            <div class="modal-body">
+              <p>Mathieu Lemire was born in 1988 Montreal,QC Canada. Lemire learned the basics of photography at the age of 12
+                and he got his first camara in 2007, a dslr 30D.</p>
+              <p>For him, photography is freezing moments that take place in a fraction of a second, capturing the best angle
+                and lighting when it's all at the right place!</p>
+              <h3>Inspired by:</h3>
+                <a href="//annieleibovitz.tumblr.com/">Annie Leibovitz</a>, 
+                <a href="//colebarash.com/">Cole Barash</a>,
+                <a href="//chasejarvis.com/">Chase Jarvis</a>,
+                <a href="//erikseo.com">Erik Seo</a>.
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn" data-dismiss="modal">Close</a><!-- note the use of "data-dismiss" -->
+            </div>
+          </div>
+        </div>
+      </div>​
       <div class="clear"></div>
       <div class="footer">
         <div class="row">
