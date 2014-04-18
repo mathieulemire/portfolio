@@ -23,20 +23,13 @@ div.navbar-header * {
   color: black !important;
   opacity: 1 !important;
 }
-div#main {
+div.header {
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   background-image: url(/images/ml_bg_1024.jpg);
-}
-div.signup {
-  margin-left: 10px;
-}
-div.signup form {
-  position: absolute;
-  z-index: 2;
 }
 span.brand {
   font-style: italic;
@@ -45,18 +38,17 @@ span.brand {
 }
 
 /* FOOTER */
-div#footer {
+div.footer {
   position: absolute;
   z-index: 1;
   width: 100%;
   bottom: 0px;
-  background-color: white;
-  opacity: 0.2;
+  background-color: rgba(255,255,255,0.5);
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   padding-left: 30px;
 }
-div#footer div.container * {
-  color: black !important;
-  opacity: 1 !important;
+div.signup {
+  float: right;
+  margin-right: 30px;
 }

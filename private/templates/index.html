@@ -11,7 +11,7 @@
       {{ css }}
     {% endautoescape %}
     </style>
-    <div id="main">
+    <div class="header">
       <!-- <div class="fp_overlay"></div> -->
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -27,13 +27,14 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class=""><a href="#">About</a></li>
+              <li class=""><a href="#"><i>About</i></a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i>Portfolio</i> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   {% for album in albums %}
-                  <li><a href="/portfolio/{{ album }}">{{ album | capitalize }}</a></li>
+                  <li><a href="/portfolio/{{ album }}"><i>{{ album | capitalize }}</i></a></li>
                   {% endfor %}
+                  <li><a href="//youconquer.com" target="_blank"><i>Skateboard</i></a></li>
                 </ul>
               </li>
             </ul>
@@ -41,28 +42,28 @@
         </div>
       </nav>
       <div class="clear"></div>
-      <div class="signup">
-        <form action="{{ conf['url'] }}/subscribe" method="POST" role="form" class="form-inline">
-          <div class="form-group">
-            <input id="rName" name="rName" type="text" value="{{ rName }}" class="hidden form-control input-sm"/>
-          </div>
-          <div class="form-group">
-            <input id="rEmail" name="rEmail" type="text" value="{{ rEmail }}" class="hidden form-control input-sm"/>
-          </div>
-          <div class="form-group">
-            <input id="name" name="name" type="text" placeholder="Enter your name" class="form-control input-sm"/>
-          </div>
-          <div class="form-group">
-            <input id="email" name="email" type="text" placeholder="Enter your e-mail" value="{{ email }}" class="form-control input-sm"/>
-          </div>
-          <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
-        </form>
-      </div>
-      <div id="footer">
+      <div class="footer">
         <div class="row">
-            <a class="" href="https://facebook.com/mathlphoto" target="_blank"><i class="icon-facebook icon-large icon-white">&nbsp;</i></a>
-            <a class="" href="https://twitter.com/Lemirephoto" target="_blank"><i class="icon-twitter icon-large icon-white">&nbsp;</i></a>
-            <!-- <a class="" href="https://twitter.com/espaciomore" target="_blank"><img src="/images/favicon.png" width="28" height="28"/>&nbsp;</i></a> -->
+          <a class="" href="https://facebook.com/mathlphoto" target="_blank"><i class="icon-facebook icon-large">&nbsp;</i></a>
+          <a class="" href="https://twitter.com/Lemirephoto" target="_blank"><i class="icon-twitter icon-large">&nbsp;</i></a>
+          <!-- <a class="" href="https://twitter.com/espaciomore" target="_blank"><img src="/images/favicon.png" width="28" height="28"/>&nbsp;</i></a> -->
+          <div class="signup">
+            <form action="{{ conf['url'] }}/subscribe" method="POST" role="form" class="form-inline">
+              <div class="form-group">
+                <input id="rName" name="rName" type="text" value="{{ rName }}" class="hidden form-control input-sm"/>
+              </div>
+              <div class="form-group">
+                <input id="rEmail" name="rEmail" type="text" value="{{ rEmail }}" class="hidden form-control input-sm"/>
+              </div>
+              <div class="form-group">
+                <input id="name" name="name" type="text" placeholder="Enter your name" class="hidden form-control input-sm"/>
+              </div>
+              <div class="form-group">
+                <input id="email" name="email" type="text" placeholder="Enter your e-mail" value="{{ email }}" class="form-control input-sm"/>
+                <button type="submit" class="btn btn-default btn-sm">Subscribe</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
