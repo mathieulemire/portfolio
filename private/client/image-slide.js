@@ -236,6 +236,6 @@ $(window).resize(function() {
   sliderWidth=$(window).width()-padding;
 });
 
-setTimeout(function() {
-  $('.content').get(0).click();
-}, 2000);
+// setTimeout(function() {
+//   $('.content').get(0).click();
+// }, 2000);

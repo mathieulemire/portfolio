@@ -46,6 +46,20 @@ div.modal-backdrop {
 div#biography div.container {
   z-index: 11 !important;
 }
+.icon-flag-canada {
+  background-image: url(/images/flags.png);
+  background-position: -56px -87px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 24px;
+  height: 16px;
+}
+.inline {
+  display: inline-block !important;
+}
+.localization {
+  padding-right: 2px;
+}
 /* FOOTER */
 div.footer {
   position: absolute;

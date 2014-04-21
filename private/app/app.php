@@ -72,11 +72,14 @@ abstract class App
         $conf = $app['conf'];
         $loader = $app['loader'];
         $css = $loader(array('bootstrap.min.css','bootstrap.glyphicons.min.css','style.css'),'../style');
-        $js = $loader(array('jquery-2.0.2-min.js','bootstrap.min.js'),'../client');
+        $js = $loader(array('jquery-2.0.2-min.js','bootstrap.min.js','localization.js','client.js'),'../client');
         $cmd_ls = $app['cmd:ls'];
         $albums = $cmd_ls('../../images','.',false);
         $template_engine = $app['template_engine'];
-        return $template_engine->render('index.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'albums'=>$albums));
+        $http_response = new \Symfony\Component\HttpFoundation\Response(
+           $template_engine->render('index.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'albums'=>$albums))
+          );
+        return $http_response;
       }),
       array('method'=>'GET','name'=>'/admin','callback'=>function() use($app){
         $conf = $app['conf'];
@@ -86,7 +89,10 @@ abstract class App
         $cmd_ls = $app['cmd:ls'];
         $albums = $cmd_ls('../../images','.',false);
         $template_engine = $app['template_engine'];
-        return $template_engine->render('admin.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'portfolio'=>$albums));
+        $http_response = new \Symfony\Component\HttpFoundation\Response(
+           $template_engine->render('admin.html',array('conf'=>$conf,'css'=>$css,'js'=>$js,'portfolio'=>$albums))
+          );
+        return $http_response;
       }),
       array('method'=>'POST','name'=>'/admin','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
         return $app->redirect('/admin',302);
@@ -102,13 +108,15 @@ abstract class App
         $cmd_ls = $app['cmd:ls'];
         $filenames = $cmd_ls('../../images/'.$album);
         $template_engine = $app['template_engine'];
-        return $template_engine->render('portfolio.html',array(
-          'conf'=>$conf,'css'=>$css,'js'=>$js,
-          'album'=>$album,
-          'filename'=>$filenames[0],
-          'thumbnails'=>$filenames
-          )
-        );
+        $http_response = new \Symfony\Component\HttpFoundation\Response(
+           $template_engine->render('portfolio.html',array(
+            'conf'=>$conf,'css'=>$css,'js'=>$js,
+            'album'=>$album,
+            'filename'=>$filenames[0],
+            'thumbnails'=>$filenames)
+            )
+          );
+        return $http_response;
       }),      
       array('method'=>'POST','name'=>'/invite','callback'=>function(\Symfony\Component\HttpFoundation\Request $req) use($app){
         $rName = $req->get('rName');

@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-    <title>Mathieu Lemire - photography</title>
+    <title data=en="Mathieu Lemire - photography" data-fr="Mathieu Lemire - photographie">&nbsp;</title>
     <meta name="description" content="photography">
     <meta name="keywords" content="homepage,mathieulemire">
     <meta name="author" content="mathieulemire">
@@ -29,9 +29,9 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class=""><a data-toggle="modal" href="#biography"><i>ABOUT</i></a></li>
+              <li class=""><a data-toggle="modal" href="#biography"><label data-en="ABOUT" data-fr="PROPOS">&nbsp;</label></a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i>PORTFOLIO</i> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><label data-en="PORTFOLIO" data-fr="PORTEFEUILLE"></label><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   {% for album in albums %}
                   <li><a href="/portfolio/{{ album }}"><i>{{ album | capitalize }}</i></a></li>
@@ -39,6 +39,9 @@
                   <li><a href="//youconquer.com" target="_blank"><i>Skateboard</i></a></li>
                 </ul>
               </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+              <li data-toggle="modal"><a href="#lang-fr" class="localization inline" data-lang="fr">FR</a><i class="icon-flag-canada"></i></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -48,14 +51,12 @@
           <div class="jumbotron">
             <div class="modal-header">
               <button class="close" data-dismiss="modal">×</button>
-              <h2>ABOUT THE AUTHOR</h2>
+              <h2 data-en="ABOUT THE AUTHOR" data-fr="À PROPOS DE L'AUTEUR">&nbsp;</h2>
             </div>
             <div class="modal-body">
-              <p>Mathieu Lemire was born in 1988 Montreal,QC Canada. Lemire learned the basics of photography at the age of 12
-                and he got his first camara in 2007, a dslr 30D.</p>
-              <p>For him, photography is freezing moments that take place in a fraction of a second, capturing the best angle
-                and lighting when it's all at the right place!</p>
-              <h3>INSPIRED BY:</h3>
+              <p data-en="Mathieu Lemire was born in 1988 Montreal,QC Canada. Lemire learned the basics of photography at the age of 12 and he got his first camera in 2007, a DSLR 30D." data-fr="Mathieu Lemire est né en 1988 à Montréal, QC Canada. Lemire a appris les rudiments de la photographie à l'âge de 12 et il a obtenu son premier appareil photo en 2007, un 30D DSLR.">&nbsp;</p>
+              <p data-en="For him, photography is freezing moments that take place in a fraction of a second, capturing the best angle and lighting when it's all at the right place!" data-fr="Pour lui, la photographie c'est geler des moments qui ont lieu en une fraction de seconde, en capturant le meilleur angle et l'éclairage quand tout est à la bonne place!">&nbsp;</p>
+              <h3 data-en="INSPIRED BY" data-fr="INSPIRÉ PAR">&nbsp;</h3>
                 <a href="//annieleibovitz.tumblr.com/">Annie Leibovitz</a>, 
                 <a href="//colebarash.com/">Cole Barash</a>,
                 <a href="//chasejarvis.com/">Chase Jarvis</a>,
@@ -63,7 +64,7 @@
               </ul>
             </div>
             <div class="modal-footer">
-              <a href="#" class="btn" data-dismiss="modal">Close</a><!-- note the use of "data-dismiss" -->
+              <a href="#" class="btn" data-dismiss="modal" data-en="Close" data-fr="Fermer">&nbsp;</a><!-- note the use of "data-dismiss" -->
             </div>
           </div>
         </div>
@@ -83,11 +84,11 @@
                 <input id="rEmail" name="rEmail" type="text" value="{{ rEmail }}" class="hidden form-control input-sm"/>
               </div>
               <div class="form-group">
-                <input id="name" name="name" type="text" placeholder="Enter your name" class="hidden form-control input-sm"/>
+                <input id="name" name="name" type="text" placeholder="name" class="hidden form-control input-sm"/>
               </div>
               <div class="form-group">
-                <input id="email" name="email" type="text" placeholder="Enter your e-mail" value="{{ email }}" class="form-control input-sm"/>
-                <button type="submit" class="btn btn-default btn-sm">Subscribe</button>
+                <input id="email" name="email" type="text" placeholder="e-mail" value="{{ email }}" class="form-control input-sm"/>
+                <button type="submit" class="btn btn-default btn-sm" data-en="Subscribe" data-fr="S'abonner">&nbsp;</button>
               </div>
             </form>
           </div>
