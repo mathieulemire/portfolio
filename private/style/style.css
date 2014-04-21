@@ -12,18 +12,18 @@
   background:transparent url(/images/pattern2.png) repeat-x bottom left;
 }
 /* HEADER */
-nav.navbar.navbar-default {
+.navbar.navbar-default {
   opacity: 0.6;
   background-color: white;
   border: none;
   border-radius: 0px;
   z-index: 3;
 }
-div.navbar-header * {
+.navbar-header * {
   color: black !important;
   opacity: 1 !important;
 }
-div.homepage {
+.homepage {
   height: 100%;
   left: 0;
   position: fixed;
@@ -31,19 +31,19 @@ div.homepage {
   width: 100%;
   background-image: url(/images/ml_bg_1024.jpg);
 }
-span.brand {
+.brand {
   font-style: italic;
   font-weight: bold;
   font-size: 120%; 
 }
-div.jumbotron {
+.jumbotron {
   background-color: rgba(255,255,255,0.8);
 }
-div.modal-backdrop {
+.modal-backdrop {
   z-index: 10 !important;
   position: relative !important; 
 }
-div#biography div.container {
+#biography div.container {
   z-index: 11 !important;
 }
 .icon-flag-canada {
@@ -58,20 +58,20 @@ div#biography div.container {
   display: inline-block !important;
 }
 .localization {
-  padding-right: 2px;
+  padding-right: 6px !important;
 }
 /* FOOTER */
-div.footer {
+.footer {
   position: absolute;
   z-index: 1;
   width: 100%;
   bottom: 0px;
   background-color: rgba(255,255,255,0.5);
-  padding-top: 20px;
-  padding-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 30px;
 }
-div.signup {
+.signup {
   float: right;
   margin-right: 30px;
 }

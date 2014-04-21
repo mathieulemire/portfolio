@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  localization('en');
+  localization();
   $('.localization').on('click',function(e){
     var el = $(this);
     var trans = el.data('lang');

@@ -29,7 +29,7 @@ abstract class App
     });
 
     $app['conf'] = $app->share(function(){
-      return json_decode(file_get_contents(__DIR__.'/conf.json'));
+      return json_decode(file_get_contents(__DIR__.'/conf.json'),$asArray=true);
     });
 
     $app['mail'] = $app->protect(function($to,$sub,$msg){
