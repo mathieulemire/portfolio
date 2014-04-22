@@ -12,7 +12,8 @@
   background:transparent url(/images/pattern2.png) repeat-x bottom left;
 }
 /* HEADER */
-.navbar.navbar-default {
+.navbar.navbar-default.navbar-fixed-top {
+  padding-right: 10px;
   opacity: 0.6;
   background-color: white;
   border: none;
@@ -37,16 +38,23 @@
   font-size: 120%; 
 }
 .jumbotron {
-  background-color: rgba(255,255,255,0.8);
+  margin-top: 60px;
+  margin-bottom: 60px;
+  background-color: rgba(0,0,0,0.4);
+  color: #eee !important;
 }
 .modal-backdrop {
-  z-index: 10 !important;
+  z-index: 1 !important;
   position: relative !important; 
 }
+.modal {
+  z-index: 1 !important;
+}
 #biography div.container {
-  z-index: 11 !important;
+  z-index: 2 !important;
 }
 .icon-flag-canada {
+  background-color: white;
   background-image: url(/images/flags.png);
   background-position: -56px -87px;
   display: inline-block;
@@ -57,21 +65,32 @@
 .inline {
   display: inline-block !important;
 }
+.bold {
+  font-weight: bold !important;
+}
+.black {
+  color: black !important;
+}
 .localization {
   padding-right: 6px !important;
 }
 /* FOOTER */
 .footer {
-  position: absolute;
-  z-index: 1;
+  position: fixed;
+  padding-right: 10px;
+  bottom: 0;
   width: 100%;
-  bottom: 0px;
-  background-color: rgba(255,255,255,0.5);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
+  background-color: rgba(255,255,255,0.6) !important;
+  background-color: white;
+  border: none;
+  border-radius: 0px;
+  z-index: 3;
 }
-.signup {
+.social-media {
+  padding-top: 10px;
+  float: left;
+}
+.form-inline {
+  padding-top: 6px; 
   float: right;
-  margin-right: 30px;
 }
